@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Ver Evento</title>
+</head>
+<body class="container">
+    <header class="container1">
+        <div>
+            <h1>{{evento.evento}}</h1>
+            <h4>Publicado por: {{usuario.nombre}} {{usuario.apellido}}</h4>
+        </div>
+        <a href="/eventos" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Inicio</a>
+        <a href="/logout" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Cerrar Sesión</a>
+    </header>
+    <main>
+        <div class="div1">
+            <p><strong>Ubicación:</strong> {{evento.ubicacion}}</p>
+            <p><strong>Fecha:</strong> {{evento.fecha}}</p>
+            <p><strong>Detalles: </strong> {{evento.detalle}}</p>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>

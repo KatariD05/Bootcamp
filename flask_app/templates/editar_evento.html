@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Editar Evento</title>
+</head>
+<body class="container">
+    <header class="container1">
+        <h1>Evento</h1>
+        <a href="/eventos" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Inicio</a>
+        <a href="/logout" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Cerrar sesión</a>
+    </header>
+    <main>
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="container mt-3">
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="inicio">
+            <form action="/evento/actualizar/{{evento.id}}" method="POST">
+                <div>
+                    <label for="evento" class="form-label">Nombre evento:</label>
+                    <input type="text" class="form-control" id="evento" name="evento" value="{{evento.evento}}">
+                </div>
+                <div>
+                    <label for="ubicacion" class="form-label">Ubicación:</label>
+                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{evento.ubicacion}}">
+                </div>
+                <div>
+                    <label for="fecha" class="form-label">Fecha:</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha" value="{{evento.fecha}}">
+                </div>
+                <div>
+                    <label for="detalle" class="form-label">Detalle:</label>
+                    <textarea type="text" class="form-control" id="detalle" name="detalle">{{evento.detalle}}</textarea>
+                </div>
+                <br>
+                    <input type="submit" value="Guardar Evento" class="btn btn-outline-light">
+            </form>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
